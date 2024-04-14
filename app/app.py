@@ -3,18 +3,21 @@ from faicons import icon_svg
 
 from shiny import reactive
 from shiny.express import input, render, ui
-import palmerpenguins 
-
+import palmerpenguins
+import shinyswatch
 df = palmerpenguins.load_penguins()
 
-ui.page_opts(title="Penguins dashboard", fillable=True)
+#Theme of Project
+shinyswatch.theme.slate()
+
+ui.page_opts(title="🐧 Penguins dashboard", fillable=True)
 
 
-with ui.sidebar(title="Filter controls"):
-    ui.input_slider("mass", "Mass", 2000, 6000, 6000)
+with ui.sidebar(title="FILTER CONTROLS"):
+    ui.input_slider("mass", "⚖️ Mass", 2000, 6000, 6000)
     ui.input_checkbox_group(
         "species",
-        "Species",
+        "🧬 Species",
         ["Adelie", "Gentoo", "Chinstrap"],
         selected=["Adelie", "Gentoo", "Chinstrap"],
     )
@@ -49,21 +52,21 @@ with ui.sidebar(title="Filter controls"):
 
 
 with ui.layout_column_wrap(fill=False):
-    with ui.value_box(showcase=icon_svg("earlybirds")):
+    with ui.value_box(showcase=icon_svg("earlybirds"), theme="bg-gradient-blue-green"):
         "Number of penguins"
 
         @render.text
         def count():
             return filtered_df().shape[0]
 
-    with ui.value_box(showcase=icon_svg("ruler-horizontal")):
+    with ui.value_box(showcase=icon_svg("ruler-horizontal"), theme="bg-gradient-blue-green"):
         "Average bill length"
 
         @render.text
         def bill_length():
             return f"{filtered_df()['bill_length_mm'].mean():.1f} mm"
 
-    with ui.value_box(showcase=icon_svg("ruler-vertical")):
+    with ui.value_box(showcase=icon_svg("ruler-vertical"), theme="bg-gradient-blue-green"):
         "Average bill depth"
 
         @render.text
