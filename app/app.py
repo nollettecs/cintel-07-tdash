@@ -1,3 +1,7 @@
+#------------------------------------------
+# Imports are the very first thing you'll do in any project
+# Imports allow you to work with certain subsets/data/analysis work
+#------------------------------------------
 import seaborn as sns
 from faicons import icon_svg
 
@@ -6,14 +10,23 @@ from shiny.express import input, render, ui
 import palmerpenguins
 import shinyswatch
 df = palmerpenguins.load_penguins()
-
+#------------------------------------------
 #Theme of Project
+#------------------------------------------
 shinyswatch.theme.slate()
 
-ui.page_opts(title="🐧 Penguins dashboard", fillable=True)
+#------------------------------------------
+#Page Options are the Title of your project
+#------------------------------------------
 
+ui.page_opts(title="🐧 Nollette Penguin Dataset: Exploring The Species", fillable=True)
 
-with ui.sidebar(title="FILTER CONTROLS"):
+#------------------------------------------
+#Define the Sidebar
+#Sidebar isn't always necessary, but allows for user interaction
+#------------------------------------------
+
+with ui.sidebar(title="🔬 Penguin Characteristics"):
     ui.input_slider("mass", "⚖️ Mass", 2000, 6000, 6000)
     ui.input_checkbox_group(
         "species",
@@ -22,20 +35,20 @@ with ui.sidebar(title="FILTER CONTROLS"):
         selected=["Adelie", "Gentoo", "Chinstrap"],
     )
     ui.hr()
-    ui.h6("Links")
+    ui.h6("📨 Links")
     ui.a(
         "GitHub Source",
-        href="https://github.com/denisecase/cintel-07-tdash",
+        href="https://github.com/nollettecs/cintel-07-tdash",
         target="_blank",
     )
     ui.a(
         "GitHub App",
-        href="https://denisecase.github.io/cintel-07-tdash/",
+        href="https://github.com/",
         target="_blank",
     )
     ui.a(
         "GitHub Issues",
-        href="https://github.com/denisecase/cintel-07-tdash/issues",
+        href="https://github.com/nollettecs/cintel-07-tdash/issues",
         target="_blank",
     )
     ui.a("PyShiny", href="https://shiny.posit.co/py/", target="_blank")
@@ -49,7 +62,11 @@ with ui.sidebar(title="FILTER CONTROLS"):
         href="https://github.com/denisecase/pyshiny-penguins-dashboard-express",
         target="_blank",
     )
-
+#------------------------------------------
+#Main section of your project
+#You can add/subtract cards, value boxes, grids, charts, tables, etc.
+#Get creative because this is the heart of your project
+#------------------------------------------
 
 with ui.layout_column_wrap(fill=False):
     with ui.value_box(showcase=icon_svg("earlybirds"), theme="bg-gradient-blue-green"):
@@ -101,7 +118,9 @@ with ui.layout_columns():
             ]
             return render.DataGrid(filtered_df()[cols], filters=True)
 
-
+#------------------------------------------
+#Define a reactive calc to filter the dataset
+#------------------------------------------
 #ui.include_css(app_dir / "styles.css")
 
 
