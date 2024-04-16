@@ -1,7 +1,8 @@
 # PyShiny Basic Dashboard (Penguins)
 
 ## Screenshot example of finished project!
-![Uploading image.png…]()
+
+![image](https://github.com/nollettecs/cintel-07-tdash/assets/155999592/91ff073f-6b7d-4219-b7a0-d4577776c14f)
 
 
 ## Tools
