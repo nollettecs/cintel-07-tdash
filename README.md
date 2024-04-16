@@ -1,5 +1,9 @@
 # PyShiny Basic Dashboard (Penguins)
 
+## Screenshot example of finished project!
+![Uploading image.png…]()
+
+
 ## Tools
 
 - Python
